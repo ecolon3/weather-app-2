@@ -6,23 +6,212 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Happy Weather</title>
     <link rel="stylesheet" href="src/day/day-styles.css" />
+    <!--Adding Bootstrap-->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
+    <!--Adding FontAwesome-->
+    <link href="/your-path-to-fontawesome/css/all.css" rel="stylesheet" />
+    <script
+      src="https://kit.fontawesome.com/f63209fa02.js"
+      crossorigin="anonymous"
+    ></script>
+    <!--Adding font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Shrikhand&display=swap"
+      rel="stylesheet"
+    />
+    <!--Adding font 2-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Shrikhand&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div class="container">
-      <h1>New York</h1>
-      <ul>
-        <li class="weather-details-sm"><span id="day">Wednesday </span><span class="time" id="time">2:00<span class="am-pm" id="am-pm">pm</span></li>
-        <li><span class="main-temp" id="main-temp">75°</span><span id="unit">F</span><span id="alt-unit">|°C</span></li>
-        <li class="weather-details-sm" id="description">Clear skies</li>
-        <li class="weather-details-sm" id="precipitation">Precipitation 30%</li>
-        <li class="weather-details-sm" id="wind">Wind speed 7mph</li>
-      </ul>
+      <div class="weather-app">
+        <!--Main app section starts here-->
+        <div class="row justify-content-center">
+          <!--Current forecast section starts here-->
+          <div class="col-6 current-forecast align-self-center">
+            <h1 class="current-city-displayed" id="current-city-displayed">
+              New York
+            </h1>
+            <ul class="current-weather-details">
+              <!--Day and time-->
+              <li class="weather-details-sm">
+                <span id="day">Wednesday </span
+                ><span class="time" id="time">2:00</span
+                ><span class="am-pm" id="am-pm">pm</span>
+              </li>
+              <!--Current weather icon-->
+              <li class="weather-details-sm">
+                <img
+                  src="src/day/clear.png"
+                  alt="sun icon"
+                  class="current-weather-icon"
+                  id="weather-icon"
+                />
+              </li>
+              <!--Temperature display-->
+              <li class="weather-details-sm">
+                <span class="temp"
+                  ><span class="main-temp" id="main-temp">75°</span
+                  ><span class="unit" id="unit">F</span
+                  ><span class="alt-unit" id="alt-unit"> |°C</span></span
+                >
+              </li>
+              <!--Additional weather details-->
+              <li class="weather-details-sm" id="description">Clear skies</li>
+              <li class="weather-details-sm" id="precipitation">
+                Precipitation: 30%
+              </li>
+              <li class="weather-details-sm" id="wind">Wind speed: 7mph</li>
+              <li>
+                <span class="high" id="current-high">H: 78° </span
+                ><span class="low" id="current-low"> L: 69°</span>
+              </li>
+            </ul>
+          </div>
+          <!--Forecast section starts here-->
+          <div class="col-4 align-self-center">
+            <!--Forecast day one-->
+            <div class="row forecast-container">
+              <div class="col-6">
+                <img
+                  src="src/day/light-clouds.png"
+                  alt="partly cloudy icon"
+                  class="forecast-icon"
+                  id="day-one-forecast-icon"
+                />
+              </div>
+              <div class="col-6 align-self-center">
+                <ul class="high-low">
+                  <li class="forecast-day">Mon.</li>
+                  <li class="high">
+                    <span id="day-one-high">H: 78°</span>
+                  </li>
+                  <li>
+                    <span class="low" id="day-one-low"> L: 69°</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!--Forecast day two-->
+            <div class="row forecast-container">
+              <div class="col-6">
+                <img
+                  src="src/day/light-clouds.png"
+                  alt="partly cloudy icon"
+                  class="forecast-icon"
+                  id="day-two-forecast-icon"
+                />
+              </div>
+              <div class="col-6 align-self-center">
+                <ul class="high-low">
+                  <li class="forecast-day">Mon.</li>
+                  <li class="high">
+                    <span id="day-two-high">H: 78°</span>
+                  </li>
+                  <li>
+                    <span class="low" id="day-two-low"> L: 69°</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!--Forecast day three-->
+            <div class="row forecast-container">
+              <div class="col-6">
+                <img
+                  src="src/day/light-clouds.png"
+                  alt="partly cloudy icon"
+                  class="forecast-icon"
+                  id="day-three-forecast-icon"
+                />
+              </div>
+              <div class="col-6 align-self-center">
+                <ul class="high-low">
+                  <li class="forecast-day">Mon.</li>
+                  <li class="high">
+                    <span id="day-three-high">H: 78°</span>
+                  </li>
+                  <li>
+                    <span class="low" id="day-three-low"> L: 69°</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!--Forecast day four-->
+            <div class="row forecast-container">
+              <div class="col-6">
+                <img
+                  src="src/day/light-clouds.png"
+                  alt="partly cloudy icon"
+                  class="forecast-icon"
+                  id="day-four-forecast-icon"
+                />
+              </div>
+              <div class="col-6 align-self-center">
+                <ul class="high-low">
+                  <li class="forecast-day">Mon.</li>
+                  <li class="high">
+                    <span id="day-four-high">H: 78°</span>
+                  </li>
+                  <li>
+                    <span class="low" id="day-four-low"> L: 69°</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!--Forecast day five-->
+            <div class="row forecast-container">
+              <div class="col-6">
+                <img
+                  src="src/day/light-clouds.png"
+                  alt="partly cloudy icon"
+                  class="forecast-icon"
+                  id="day-five-forecast-icon"
+                />
+              </div>
+              <div class="col-6 align-self-center">
+                <ul class="high-low">
+                  <li class="forecast-day">Mon.</li>
+                  <li class="high">
+                    <span id="day-five-high">H: 78°</span>
+                  </li>
+                  <li class="low">
+                    <span id="day-five-low"> L: 69°</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!--End forecast day 5-->
+          </div>
+          <!--End forecast section-->
+        </div>
+        <!--End main app section-->
+        <!--Search bar section starts here-->
+        <div class="row justify-content-center">
+          <div class="col-11">
+            <input
+              class="search"
+              type="text"
+              placeholder="City search"
+              autofocus="true"
+            />
+            <i class="fas fa-search"></i>
+            <i class="fas fa-location-arrow"></i>
+          </div>
+        </div>
+        <!--End of search bar section-->
+      </div>
     </div>
   </body>
 </html>

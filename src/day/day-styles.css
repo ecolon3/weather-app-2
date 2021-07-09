@@ -1,0 +1,101 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(
+    110.4deg,
+    rgb(164, 215, 238) 9.6%,
+    rgb(113, 124, 187) 91%
+  );
+}
+h1 {
+  margin-bottom: 0;
+  font-family: "Shrikhand", cursive;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+li {
+  margin: 0;
+  padding: 0;
+}
+.alt-unit {
+  font-size: 18px;
+  font-weight: bold;
+}
+.fas {
+  font-size: 20px;
+  margin-left: 3px;
+}
+.fas:hover {
+  color: rgb(26, 68, 116);
+  cursor: pointer;
+}
+.forecast-container {
+  margin-bottom: 5px;
+}
+.forecast-day {
+  font-weight: bold;
+}
+.forecast-icon {
+  width: 70px;
+}
+.current-city-displayed {
+  margin: 0;
+  padding: 0;
+  font-size: 40px;
+}
+.current-forecast {
+}
+.current-weather-details {
+  margin: 0;
+  padding: 0;
+}
+.current-weather-icon {
+  width: 175px;
+}
+.high-low {
+  margin: 0;
+  padding: 0;
+  font-size: 15px;
+}
+.high,
+.low {
+  margin: 0;
+  padding: 0;
+  line-height: 15px;
+}
+.main-temp,
+.unit {
+  font-weight: bold;
+  font-size: 30px;
+}
+.search {
+  width: 80%;
+  margin-left: 2%;
+  margin-top: 30px;
+  font-size: 20px;
+}
+.search:focus {
+  outline: none;
+}
+.temp {
+  font-family: "Shrikhand", cursive;
+}
+.weather-app {
+  background-color: #d1f8fe;
+  font-family: "Lora", serif;
+  font-weight: 500;
+  max-width: 500px;
+  margin: 30px auto 0 auto;
+  border-radius: 8px;
+  padding: 30px 0px 30px 15px;
+  box-shadow: 5px 5px 15px rgb(0, 0, 0, 0.5);
+  border: solid 4px #195d7c;
+}
+.weather-details-sm {
+  margin: 0;
+  padding: 0;
+  line-height: 22px;
+}
