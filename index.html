@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Happy Weather</title>
     <link rel="stylesheet" href="src/day/day-styles.css" />
+    <!--Adding Axios-->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <!--Adding Bootstrap-->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -14,7 +16,6 @@
       crossorigin="anonymous"
     />
     <!--Adding FontAwesome-->
-    <link href="/your-path-to-fontawesome/css/all.css" rel="stylesheet" />
     <script
       src="https://kit.fontawesome.com/f63209fa02.js"
       crossorigin="anonymous"
@@ -70,9 +71,6 @@
               </li>
               <!--Additional weather details-->
               <li class="weather-details-sm" id="description">Clear skies</li>
-              <li class="weather-details-sm" id="precipitation">
-                Precipitation: 30%
-              </li>
               <li class="weather-details-sm" id="wind">Wind speed: 7mph</li>
               <li>
                 <span class="high" id="current-high">H: 78° </span
@@ -205,13 +203,22 @@
               type="text"
               placeholder="City search"
               autofocus="true"
+              id="city-entered"
+              name="city-entered"
             />
-            <i class="fas fa-search"></i>
-            <i class="fas fa-location-arrow"></i>
+            <i class="fas fa-search" id="city-search"></i>
+            <i class="fas fa-location-arrow" id="gps-search"></i>
           </div>
         </div>
         <!--End of search bar section-->
       </div>
     </div>
+    <p class="signoff-link">
+      <a href="https://github.com/ecolon3/weather-app" target="_blank">
+        Open-source code</a
+      >
+      by E. Colón
+    </p>
+    <script src="src/index.js"></script>
   </body>
 </html>

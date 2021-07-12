@@ -7,6 +7,7 @@ body {
     rgb(113, 124, 187) 91%
   );
 }
+
 h1 {
   margin-bottom: 0;
   font-family: "Shrikhand", cursive;
@@ -45,6 +46,7 @@ li {
   margin: 0;
   padding: 0;
   font-size: 40px;
+  text-transform: capitalize;
 }
 .current-forecast {
 }
