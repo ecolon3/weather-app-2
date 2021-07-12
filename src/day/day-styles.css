@@ -25,6 +25,10 @@ li {
   font-size: 18px;
   font-weight: bold;
 }
+.alt-unit:hover {
+  color: rgb(26, 68, 116);
+  cursor: pointer;
+}
 .fas {
   font-size: 20px;
   margin-left: 3px;
@@ -81,6 +85,9 @@ li {
 }
 .search:focus {
   outline: none;
+}
+.signoff-link {
+  text-align: center;
 }
 .temp {
   font-family: "Shrikhand", cursive;

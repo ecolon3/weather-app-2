@@ -1,3 +1,4 @@
+// When setting the time, format the minutes with the zero for digits less than 10
 function formatMinutes() {
   let now = new Date();
   let minutes = now.getMinutes();
@@ -7,6 +8,7 @@ function formatMinutes() {
   return minutes;
 }
 
+//When setting the time, toggle AM or PM correctly
 function ToggleAMPM(hours) {
   let amPM = document.querySelector("#am-pm");
   if (hours >= 12) {
@@ -16,6 +18,7 @@ function ToggleAMPM(hours) {
   }
 }
 
+//When setting the time, apply the U.S. format to hours after 12:00pm
 function formatHours() {
   let now = new Date();
   let hours = now.getHours();
@@ -26,14 +29,15 @@ function formatHours() {
   return hours;
 }
 
+//When setting the time, format the time
 function getTime() {
-  let now = new Date();
   let hours = formatHours();
   let minutes = formatMinutes();
   let time = `${hours}:${minutes}`;
   return time;
 }
 
+//When setting the day, apply the correct day name
 function getDayName() {
   let days = [
     "Sunday",
@@ -49,10 +53,12 @@ function getDayName() {
   return day;
 }
 
+//Set the day
 function displayDay() {
   let dayDisplayed = document.querySelector("#day");
   dayDisplayed.innerHTML = `${getDayName()} `;
 }
+//Set the time
 function displayTime() {
   let timeDisplayed = document.querySelector("#time");
   timeDisplayed.innerHTML = getTime();
@@ -61,14 +67,15 @@ function displayTime() {
 // //Change current city name and temp to match city submitted in search form
 function updateCityName() {
   let city = document.querySelector("#city-entered");
+  city = city.value.toLowerCase();
   let currentCity = document.querySelector("#current-city-displayed");
-  currentCity.innerHTML = city.value;
+  currentCity.innerHTML = city;
   //Add something here to allow people to enter cite name and state abbreviation, or zip code
 }
 function updateTemperature(response) {
   let temp = Math.round(response.data.main.temp);
   let currentDegrees = document.querySelector("#main-temp");
-  currentDegrees.innerHTML = `${temp}°`;
+  currentDegrees.innerHTML = `${temp}`;
 }
 
 function updateDescription(response) {
@@ -94,7 +101,9 @@ function updateHiLo(response) {
   highDisplayed.innerHTML = `H: ${high}°`;
   lowDisplayed.innerHTML = ` L: ${low}°`;
 }
+
 //Add a drizzle icon and test this function with different weather codes
+//Updating the weather icon based on the current weather code
 function updateImage(response) {
   let weatherID = response.data.weather[0].id;
   let weatherIcon = document.querySelector("#weather-icon");
@@ -116,6 +125,7 @@ function updateImage(response) {
     weatherIcon.src = "src/day/rain.png";
   }
 }
+
 //Functions called when someone clicks the search or GPS button
 function updateCurrentData(response) {
   updateTemperature(response);
@@ -140,6 +150,7 @@ function updateDisplayToCity() {
   getTempByCity();
 }
 
+//Updating the city name to lat and long when the GPS button is clicked
 function changeNameToGPS(position) {
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
@@ -149,6 +160,8 @@ function changeNameToGPS(position) {
   let location = document.querySelector("#current-city-displayed");
   location.innerHTML = gPSCoords;
 }
+
+//Updating the temperature and other weather details when the GPS button is clicked
 function getTempByGPS(position) {
   let apiKey = "68c9ee99b56155d1827a40287a70216c";
   let units = "imperial";
@@ -158,13 +171,46 @@ function getTempByGPS(position) {
   axios.get(apiUrl).then(updateCurrentData);
 }
 
+//Updating the city name and temperature when the GPS button is clicked
 function updateDisplayToGps(position) {
   changeNameToGPS(position);
   getTempByGPS(position);
 }
 
+//Getting the GPS coordinates when the GPS arrow is clicked
 function getGps() {
   navigator.geolocation.getCurrentPosition(updateDisplayToGps);
+}
+
+//Switching the units and converting the temperature to celsius
+function switchToCelsius() {
+  let mainUnit = document.querySelector("#unit");
+  mainUnit.innerHTML = "°C";
+  altUnit.innerHTML = " |°F";
+  let temp = document.querySelector("#main-temp");
+  let newTemp = Math.round(((temp.innerHTML - 32) * 5) / 9);
+  console.log(newTemp);
+  temp.innerHTML = newTemp;
+}
+
+//Switching the units and converting the temperature to imperial
+function switchToImperial() {
+  let mainUnit = document.querySelector("#unit");
+  mainUnit.innerHTML = "°F";
+  altUnit.innerHTML = " |°C";
+  let temp = document.querySelector("#main-temp");
+  let newTemp = Math.round((temp.innerHTML * 9) / 5 + 32);
+  console.log(newTemp);
+  temp.innerHTML = newTemp;
+}
+
+//Establishing the condition for switching to imperial or celsius when altUnit is clicked
+function switchUnits() {
+  if (altUnit.innerHTML === " |°C") {
+    switchToCelsius();
+  } else if (altUnit.innerHTML === " |°F") {
+    switchToImperial();
+  }
 }
 
 //Calling functions to run on initiation
@@ -179,3 +225,7 @@ citySearch.addEventListener("click", updateDisplayToCity);
 //Adding a listener for the GPS icon
 let gpsSearch = document.querySelector("#gps-search");
 gpsSearch.addEventListener("click", getGps);
+
+//Adding a listener to the alternate temperature unit
+let altUnit = document.querySelector("#alt-unit");
+altUnit.addEventListener("click", switchUnits);
