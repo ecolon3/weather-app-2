@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Happy Weather</title>
-    <link rel="stylesheet" href="src/day/day-styles.css" />
     <!--Adding Axios-->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <!--Adding Bootstrap-->
@@ -34,6 +33,8 @@
       href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Shrikhand&display=swap"
       rel="stylesheet"
     />
+    <!--Linking to the CSS-->
+    <link rel="stylesheet" href="src/day/day-styles.css" />
   </head>
   <body>
     <div class="container">
@@ -71,10 +72,16 @@
               </li>
               <!--Additional weather details-->
               <li class="weather-details-sm" id="description">Clear skies</li>
-              <li class="weather-details-sm" id="wind">Wind speed: 7mph</li>
+              <li class="weather-details-sm" id="wind">
+                Wind speed: <span id="wind-speed">7</span
+                ><span id="wind-unit">mph</span>
+              </li>
               <li>
-                <span class="high" id="current-high">H: 78° </span
-                ><span class="low" id="current-low"> L: 69°</span>
+                <span class="high" id="current-high"
+                  >H: <span id="high-temp-now">78</span>° </span
+                ><span class="low" id="current-low">
+                  L: <span id="low-temp-now">69</span>°</span
+                >
               </li>
             </ul>
           </div>

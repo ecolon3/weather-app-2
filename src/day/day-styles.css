@@ -24,6 +24,8 @@ li {
 .alt-unit {
   font-size: 18px;
   font-weight: bold;
+  position: relative;
+  top: -7px;
 }
 .alt-unit:hover {
   color: rgb(26, 68, 116);
@@ -49,7 +51,9 @@ li {
 .current-city-displayed {
   margin: 0;
   padding: 0;
-  font-size: 40px;
+  font-size: 35px;
+  overflow-wrap: break-word;
+  hyphens: auto;
   text-transform: capitalize;
 }
 .current-forecast {

@@ -88,18 +88,19 @@ function updateDescription(response) {
 
 function updateWindSpeed(response) {
   let windSpeed = Math.round(response.data.wind.speed);
-  let windDisplayed = document.querySelector("#wind");
-  windDisplayed.innerHTML = `Wind speed: ${windSpeed}mph`;
+  let windDisplayed = document.querySelector("#wind-speed");
+  windDisplayed.innerHTML = windSpeed;
 }
 
 function updateHiLo(response) {
+  //Don't forget to delete the console.log later
   console.log(response.data);
   let high = Math.round(response.data.main.temp_max);
   let low = Math.round(response.data.main.temp_min);
-  let highDisplayed = document.querySelector("#current-high");
-  let lowDisplayed = document.querySelector("#current-low");
-  highDisplayed.innerHTML = `H: ${high}°`;
-  lowDisplayed.innerHTML = ` L: ${low}°`;
+  let highDisplayed = document.querySelector("#high-temp-now");
+  let lowDisplayed = document.querySelector("#low-temp-now");
+  highDisplayed.innerHTML = high;
+  lowDisplayed.innerHTML = low;
 }
 
 //Add a drizzle icon and test this function with different weather codes
@@ -182,15 +183,45 @@ function getGps() {
   navigator.geolocation.getCurrentPosition(updateDisplayToGps);
 }
 
+function calculateCelsius(number) {
+  return Math.round(((number - 32) * 5) / 9);
+}
+
+function calculateImperialTemp(number) {
+  return Math.round((number * 9) / 5 + 32);
+}
+
+function switchtoKMH(number) {
+  return Math.round(number * 1.609);
+}
+function switchtoMPH(number) {
+  return Math.round(number / 1.609);
+}
+
 //Switching the units and converting the temperature to celsius
 function switchToCelsius() {
+  //Converting the main temp
   let mainUnit = document.querySelector("#unit");
   mainUnit.innerHTML = "°C";
   altUnit.innerHTML = " |°F";
   let temp = document.querySelector("#main-temp");
-  let newTemp = Math.round(((temp.innerHTML - 32) * 5) / 9);
-  console.log(newTemp);
+  let newTemp = calculateCelsius(temp.innerHTML);
   temp.innerHTML = newTemp;
+  //Converting the hi-lo
+  let highDisplayed = document.querySelector("#high-temp-now");
+  let lowDisplayed = document.querySelector("#low-temp-now");
+  let newHigh = calculateCelsius(highDisplayed.innerHTML);
+  let newLow = calculateCelsius(lowDisplayed.innerHTML);
+  highDisplayed.innerHTML = newHigh;
+  lowDisplayed.innerHTML = newLow;
+  //Converting the wind speed - NOT WORKING
+  let windSpeed = document.querySelector("#wind-speed");
+  console.log(windSpeed);
+  let windUnit = document.querySelector("#wind-unit");
+  console.log(document.querySelector("#wind-unit"));
+  windUnit.innerHTML = "km/h";
+  let newSpeed = switchtoKMH(windSpeed.innerHTML);
+  windSpeed.innerHTML = newSpeed;
 }
 
 //Switching the units and converting the temperature to imperial
@@ -199,9 +230,21 @@ function switchToImperial() {
   mainUnit.innerHTML = "°F";
   altUnit.innerHTML = " |°C";
   let temp = document.querySelector("#main-temp");
-  let newTemp = Math.round((temp.innerHTML * 9) / 5 + 32);
-  console.log(newTemp);
+  let newTemp = calculateImperialTemp(temp.innerHTML);
   temp.innerHTML = newTemp;
+  //Converting the hi-lo
+  let highDisplayed = document.querySelector("#high-temp-now");
+  let lowDisplayed = document.querySelector("#low-temp-now");
+  let newHigh = calculateImperialTemp(highDisplayed.innerHTML);
+  let newLow = calculateImperialTemp(lowDisplayed.innerHTML);
+  highDisplayed.innerHTML = newHigh;
+  lowDisplayed.innerHTML = newLow;
+  //Converting the wind speed
+  let windSpeed = document.querySelector("#wind-speed");
+  let windUnit = document.querySelector("#wind-unit");
+  windUnit.innerHTML = "mph";
+  let newSpeed = switchtoMPH(windSpeed.innerHTML);
+  windSpeed.innerHTML = newSpeed;
 }
 
 //Establishing the condition for switching to imperial or celsius when altUnit is clicked
